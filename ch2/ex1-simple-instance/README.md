@@ -3,7 +3,7 @@
 - uses busy box to return a static web page on port 80
 
 # How to use
-If you didn't clone the repo yet, do that by accessing this [link](https://github.com/ion-onboarding/book-terraform-up).\
+If you didn't clone the repo yet, do that by accessing this [link](https://github.com/ion-onboarding/book-terraform-up) then return back here.\
 Open shell and drive to `book-terraform-up/ch2/ex1-simple-instance`
 
 ## Create resources
