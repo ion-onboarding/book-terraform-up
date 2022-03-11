@@ -3,6 +3,7 @@
 - uses busy box to return a static web page on port 80
 
 # How to use
+Open shell and drive to `book-terraform-up/ch2/ex1-simple-instance`
 
 ## Create resources
 ```
