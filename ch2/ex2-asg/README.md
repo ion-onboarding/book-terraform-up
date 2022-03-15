@@ -5,7 +5,10 @@
 
 # How to use
 If you didn't clone the repo yet, do that by accessing this [link](https://github.com/ion-onboarding/book-terraform-up) then return back here.\
-Open shell and drive to `book-terraform-up/ch2/ex2-asg`
+Open a shell and drive to:
+```
+cd ch2/ex2-asg
+```
 
 ## Create resources
 ```
