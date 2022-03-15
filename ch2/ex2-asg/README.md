@@ -23,6 +23,16 @@ terraform apply -auto-approve
 terraform output
 ```
 
+## output connection details for WWW and SSH (# of servers in ASG changes)
+If a server in the ASG is replaced or if more servers in the ASG come online,\
+do terraform apply so that current and new servers from ASG are read:
+```
+terraform apply -auto-approve
+```
+```
+terraform output
+```
+
 ## Delete resources
 ```
 terraform destroy -auto-approve
@@ -30,7 +40,7 @@ terraform destroy -auto-approve
 
 # Sample output: resources are created
 ```
-terraform output
+$ terraform output
 access_SSH = tolist([
   "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.48.24.60",
   "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.49.0.149",
@@ -43,7 +53,7 @@ access_WWW = tolist([
 ])
 ```
 ```
-curl http://13.48.24.60
+$ curl http://13.48.24.60
 <h1 style=text-align:center>Hello from hostname <span style=color:green>ip-10-0-1-246<span></h1>
 <h1 style=text-align:center>public IP:<span style=color:green>13.48.24.60<span></h1>
 ```
