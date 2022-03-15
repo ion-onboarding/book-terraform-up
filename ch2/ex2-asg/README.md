@@ -456,3 +456,362 @@ access_WWW = tolist([
 ])
 ```
 
+## Deleting resources
+```
+terraform destroy -auto-approve
+random_pet.suffix_name: Refreshing state... [id=possum]
+tls_private_key.keys: Refreshing state... [id=4d0dc2ca17ee37787152e3a0c140b2749a014bad]
+local_file.ssh-key-file: Refreshing state... [id=8377628b57d58a15d7711a193742f6ec0d862d2d]
+aws_key_pair.ssh-key: Refreshing state... [id=ion-ssh-key-possum]
+module.vpc.aws_vpc.vpc: Refreshing state... [id=vpc-0cba03045af90e3e5]
+module.vpc.aws_internet_gateway.gw: Refreshing state... [id=igw-0edb319475813080d]
+module.vpc.aws_subnet.subnet_private: Refreshing state... [id=subnet-0aa096f7b3f739d72]
+module.vpc.aws_security_group.sg-ubuntu: Refreshing state... [id=sg-0252e86a1349b3c42]
+module.vpc.aws_route_table.route_table: Refreshing state... [id=rtb-02945f9ab463d0f60]
+aws_launch_configuration.ubuntu: Refreshing state... [id=possum_launch_20220315111821691000000001]
+module.vpc.aws_route_table_association.a: Refreshing state... [id=rtbassoc-04fe24efd83ef648e]
+aws_autoscaling_group.ubuntu: Refreshing state... [id=terraform-20220315111822219600000002]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_autoscaling_group.ubuntu will be destroyed
+  - resource "aws_autoscaling_group" "ubuntu" {
+      - arn                       = "arn:aws:autoscaling:eu-north-1:267023797923:autoScalingGroup:b0d2b4c8-9198-4999-88b2-4f5b379b1980:autoScalingGroupName/terraform-20220315111822219600000002" -> null
+      - availability_zones        = [
+          - "eu-north-1a",
+        ] -> null
+      - capacity_rebalance        = false -> null
+      - default_cooldown          = 300 -> null
+      - desired_capacity          = 3 -> null
+      - enabled_metrics           = [] -> null
+      - force_delete              = false -> null
+      - force_delete_warm_pool    = false -> null
+      - health_check_grace_period = 300 -> null
+      - health_check_type         = "EC2" -> null
+      - id                        = "terraform-20220315111822219600000002" -> null
+      - launch_configuration      = "possum_launch_20220315111821691000000001" -> null
+      - load_balancers            = [] -> null
+      - max_instance_lifetime     = 0 -> null
+      - max_size                  = 4 -> null
+      - metrics_granularity       = "1Minute" -> null
+      - min_size                  = 3 -> null
+      - name                      = "terraform-20220315111822219600000002" -> null
+      - name_prefix               = "terraform-" -> null
+      - protect_from_scale_in     = false -> null
+      - service_linked_role_arn   = "arn:aws:iam::267023797923:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling" -> null
+      - suspended_processes       = [] -> null
+      - target_group_arns         = [] -> null
+      - termination_policies      = [] -> null
+      - vpc_zone_identifier       = [
+          - "subnet-0aa096f7b3f739d72",
+        ] -> null
+      - wait_for_capacity_timeout = "10m" -> null
+
+      - tag {
+          - key                 = "Name" -> null
+          - propagate_at_launch = true -> null
+          - value               = "possum_asg-ubuntu_" -> null
+        }
+    }
+
+  # aws_key_pair.ssh-key will be destroyed
+  - resource "aws_key_pair" "ssh-key" {
+      - arn         = "arn:aws:ec2:eu-north-1:267023797923:key-pair/ion-ssh-key-possum" -> null
+      - fingerprint = "6f:ec:35:8a:3d:52:01:8a:66:9e:29:91:fa:18:b6:b8" -> null
+      - id          = "ion-ssh-key-possum" -> null
+      - key_name    = "ion-ssh-key-possum" -> null
+      - key_pair_id = "key-0cbb253d29cc1dd54" -> null
+      - public_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO/hqNegJhQKja6p1PK3K8ou/WUbWzBVln5xBLufTUv+UWmwl72VB3eSViAFyLEwd4eNyJCNfCRT/UETPW25qmBd25sz5YFHycH8Pec+BTZPgsyCoNwGUtYrqa2HW7uXGItO5h15xT9KpNDbS/uA6LfJ+S6G/O0g+iF9K8cs6rIvZqMRJYl6jKX3F2QytB+zDimTTbD1FhFbGX9fWOQYuEUXbFqGeg07KnwhciF0HG3mTc+/7ZGhAqj3DjrFpbQ8OVf+Y+kBZrftIr/Zp/RnJqg1DcTTdxiLhufEXsOcUQ46LWK28E7rkOiABgf6f9CfkF5PbCRC5xxC50nV+BYlm3" -> null
+      - tags        = {
+          - "Name" = "ion-key-pair-possum"
+        } -> null
+      - tags_all    = {
+          - "Name" = "ion-key-pair-possum"
+        } -> null
+    }
+
+  # aws_launch_configuration.ubuntu will be destroyed
+  - resource "aws_launch_configuration" "ubuntu" {
+      - arn                              = "arn:aws:autoscaling:eu-north-1:267023797923:launchConfiguration:3394a99b-3130-444e-bfbe-b85a6f5b1ca3:launchConfigurationName/possum_launch_20220315111821691000000001" -> null
+      - associate_public_ip_address      = true -> null
+      - ebs_optimized                    = false -> null
+      - enable_monitoring                = true -> null
+      - id                               = "possum_launch_20220315111821691000000001" -> null
+      - image_id                         = "ami-04e4f9b92505045dd" -> null
+      - instance_type                    = "t3.micro" -> null
+      - key_name                         = "ion-ssh-key-possum" -> null
+      - name                             = "possum_launch_20220315111821691000000001" -> null
+      - name_prefix                      = "possum_launch_" -> null
+      - security_groups                  = [
+          - "sg-0252e86a1349b3c42",
+        ] -> null
+      - user_data                        = "63efe6b160b78adf93fbe6e3fcbcc1a6e0daf630" -> null
+      - vpc_classic_link_security_groups = [] -> null
+    }
+
+  # local_file.ssh-key-file will be destroyed
+  - resource "local_file" "ssh-key-file" {
+      - content              = (sensitive) -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0600" -> null
+      - filename             = "./artifacts/id_rsa.priv" -> null
+      - id                   = "8377628b57d58a15d7711a193742f6ec0d862d2d" -> null
+    }
+
+  # random_pet.suffix_name will be destroyed
+  - resource "random_pet" "suffix_name" {
+      - id        = "possum" -> null
+      - length    = 1 -> null
+      - separator = "-" -> null
+    }
+
+  # tls_private_key.keys will be destroyed
+  - resource "tls_private_key" "keys" {
+      - algorithm                  = "RSA" -> null
+      - ecdsa_curve                = "P224" -> null
+      - id                         = "4d0dc2ca17ee37787152e3a0c140b2749a014bad" -> null
+      - private_key_pem            = (sensitive value)
+      - public_key_fingerprint_md5 = "de:45:08:a6:77:de:96:93:0d:75:9d:2f:1c:b2:ab:a6" -> null
+      - public_key_openssh         = <<-EOT
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO/hqNegJhQKja6p1PK3K8ou/WUbWzBVln5xBLufTUv+UWmwl72VB3eSViAFyLEwd4eNyJCNfCRT/UETPW25qmBd25sz5YFHycH8Pec+BTZPgsyCoNwGUtYrqa2HW7uXGItO5h15xT9KpNDbS/uA6LfJ+S6G/O0g+iF9K8cs6rIvZqMRJYl6jKX3F2QytB+zDimTTbD1FhFbGX9fWOQYuEUXbFqGeg07KnwhciF0HG3mTc+/7ZGhAqj3DjrFpbQ8OVf+Y+kBZrftIr/Zp/RnJqg1DcTTdxiLhufEXsOcUQ46LWK28E7rkOiABgf6f9CfkF5PbCRC5xxC50nV+BYlm3
+        EOT -> null
+      - public_key_pem             = <<-EOT
+            -----BEGIN PUBLIC KEY-----
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzv4ajXoCYUCo2uqdTyty
+            vKLv1lG1swVZZ+cQS7n01L/lFpsJe9lQd3klYgBcixMHeHjciQjXwkU/1BEz1tua
+            pgXdubM+WBR8nB/D3nPgU2T4LMgqDcBlLWK6mth1u7lxiLTuYdecU/SqTQ20v7gO
+            i3yfkuhvztIPohfSvHLOqyL2ajESWJeoyl9xdkMrQfsw4pk02w9RYRWxl/X1jkGL
+            hFF2xahnoNOyp8IXIhdBxt5k3Pv+2RoQKo9w46xaW0PDlX/mPpAWa37SK/2af0Zy
+            aoNQ3E03cYi4bnxF7DnFEOOi1itvBO65DogAYH+n/Qn5BeT2wkQuccQudJ1fgWJZ
+            twIDAQAB
+            -----END PUBLIC KEY-----
+        EOT -> null
+      - rsa_bits                   = 2048 -> null
+    }
+
+  # module.vpc.aws_internet_gateway.gw will be destroyed
+  - resource "aws_internet_gateway" "gw" {
+      - arn      = "arn:aws:ec2:eu-north-1:267023797923:internet-gateway/igw-0edb319475813080d" -> null
+      - id       = "igw-0edb319475813080d" -> null
+      - owner_id = "267023797923" -> null
+      - tags     = {
+          - "Name" = "gw-possum"
+        } -> null
+      - tags_all = {
+          - "Name" = "gw-possum"
+        } -> null
+      - vpc_id   = "vpc-0cba03045af90e3e5" -> null
+    }
+
+  # module.vpc.aws_route_table.route_table will be destroyed
+  - resource "aws_route_table" "route_table" {
+      - arn              = "arn:aws:ec2:eu-north-1:267023797923:route-table/rtb-02945f9ab463d0f60" -> null
+      - id               = "rtb-02945f9ab463d0f60" -> null
+      - owner_id         = "267023797923" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-0edb319475813080d"
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "route-table-possum"
+        } -> null
+      - tags_all         = {
+          - "Name" = "route-table-possum"
+        } -> null
+      - vpc_id           = "vpc-0cba03045af90e3e5" -> null
+    }
+
+  # module.vpc.aws_route_table_association.a will be destroyed
+  - resource "aws_route_table_association" "a" {
+      - id             = "rtbassoc-04fe24efd83ef648e" -> null
+      - route_table_id = "rtb-02945f9ab463d0f60" -> null
+      - subnet_id      = "subnet-0aa096f7b3f739d72" -> null
+    }
+
+  # module.vpc.aws_security_group.sg-ubuntu will be destroyed
+  - resource "aws_security_group" "sg-ubuntu" {
+      - arn                    = "arn:aws:ec2:eu-north-1:267023797923:security-group/sg-0252e86a1349b3c42" -> null
+      - description            = "Allow inbound traffic" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0252e86a1349b3c42" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Enter SSH"
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = "Enter WEB"
+              - from_port        = 80
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 80
+            },
+        ] -> null
+      - name                   = "sgserver-ubuntu" -> null
+      - owner_id               = "267023797923" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {
+          - "Name" = "sg-server-possum"
+        } -> null
+      - tags_all               = {
+          - "Name" = "sg-server-possum"
+        } -> null
+      - vpc_id                 = "vpc-0cba03045af90e3e5" -> null
+    }
+
+  # module.vpc.aws_subnet.subnet_private will be destroyed
+  - resource "aws_subnet" "subnet_private" {
+      - arn                                            = "arn:aws:ec2:eu-north-1:267023797923:subnet/subnet-0aa096f7b3f739d72" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "eu-north-1a" -> null
+      - availability_zone_id                           = "eun1-az1" -> null
+      - cidr_block                                     = "10.0.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0aa096f7b3f739d72" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "267023797923" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name" = "subnet-possum"
+        } -> null
+      - tags_all                                       = {
+          - "Name" = "subnet-possum"
+        } -> null
+      - vpc_id                                         = "vpc-0cba03045af90e3e5" -> null
+    }
+
+  # module.vpc.aws_vpc.vpc will be destroyed
+  - resource "aws_vpc" "vpc" {
+      - arn                              = "arn:aws:ec2:eu-north-1:267023797923:vpc/vpc-0cba03045af90e3e5" -> null
+      - assign_generated_ipv6_cidr_block = false -> null
+      - cidr_block                       = "10.0.0.0/16" -> null
+      - default_network_acl_id           = "acl-0d3d1c1488db322fc" -> null
+      - default_route_table_id           = "rtb-01bcad80ff2029341" -> null
+      - default_security_group_id        = "sg-02d80755e1fdcd08c" -> null
+      - dhcp_options_id                  = "dopt-c560cdac" -> null
+      - enable_classiclink               = false -> null
+      - enable_classiclink_dns_support   = false -> null
+      - enable_dns_hostnames             = true -> null
+      - enable_dns_support               = true -> null
+      - id                               = "vpc-0cba03045af90e3e5" -> null
+      - instance_tenancy                 = "default" -> null
+      - ipv6_netmask_length              = 0 -> null
+      - main_route_table_id              = "rtb-01bcad80ff2029341" -> null
+      - owner_id                         = "267023797923" -> null
+      - tags                             = {
+          - "Name" = "vpc-possum"
+        } -> null
+      - tags_all                         = {
+          - "Name" = "vpc-possum"
+        } -> null
+    }
+
+Plan: 0 to add, 0 to change, 12 to destroy.
+
+Changes to Outputs:
+  - access_SSH = [
+      - "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.48.24.60",
+      - "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.49.0.149",
+      - "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.53.123.252",
+    ] -> null
+  - access_WWW = [
+      - "http://13.48.24.60",
+      - "http://13.49.0.149",
+      - "http://13.53.123.252",
+    ] -> null
+local_file.ssh-key-file: Destroying... [id=8377628b57d58a15d7711a193742f6ec0d862d2d]
+local_file.ssh-key-file: Destruction complete after 0s
+module.vpc.aws_route_table_association.a: Destroying... [id=rtbassoc-04fe24efd83ef648e]
+module.vpc.aws_route_table_association.a: Destruction complete after 0s
+module.vpc.aws_route_table.route_table: Destroying... [id=rtb-02945f9ab463d0f60]
+aws_autoscaling_group.ubuntu: Destroying... [id=terraform-20220315111822219600000002]
+module.vpc.aws_route_table.route_table: Destruction complete after 0s
+module.vpc.aws_internet_gateway.gw: Destroying... [id=igw-0edb319475813080d]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 10s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 10s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 20s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 20s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 30s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 30s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 40s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 40s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 50s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 50s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 1m0s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 1m0s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 1m10s elapsed]
+module.vpc.aws_internet_gateway.gw: Still destroying... [id=igw-0edb319475813080d, 1m10s elapsed]
+module.vpc.aws_internet_gateway.gw: Destruction complete after 1m19s
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 1m20s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 1m30s elapsed]
+aws_autoscaling_group.ubuntu: Still destroying... [id=terraform-20220315111822219600000002, 1m40s elapsed]
+aws_autoscaling_group.ubuntu: Destruction complete after 1m40s
+module.vpc.aws_subnet.subnet_private: Destroying... [id=subnet-0aa096f7b3f739d72]
+aws_launch_configuration.ubuntu: Destroying... [id=possum_launch_20220315111821691000000001]
+aws_launch_configuration.ubuntu: Destruction complete after 1s
+aws_key_pair.ssh-key: Destroying... [id=ion-ssh-key-possum]
+module.vpc.aws_security_group.sg-ubuntu: Destroying... [id=sg-0252e86a1349b3c42]
+module.vpc.aws_subnet.subnet_private: Destruction complete after 1s
+aws_key_pair.ssh-key: Destruction complete after 0s
+tls_private_key.keys: Destroying... [id=4d0dc2ca17ee37787152e3a0c140b2749a014bad]
+tls_private_key.keys: Destruction complete after 0s
+module.vpc.aws_security_group.sg-ubuntu: Destruction complete after 0s
+module.vpc.aws_vpc.vpc: Destroying... [id=vpc-0cba03045af90e3e5]
+module.vpc.aws_vpc.vpc: Destruction complete after 0s
+random_pet.suffix_name: Destroying... [id=possum]
+random_pet.suffix_name: Destruction complete after 0s
+
+Destroy complete! Resources: 12 destroyed.
+```
+
