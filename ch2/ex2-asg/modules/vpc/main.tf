@@ -30,7 +30,7 @@ resource "aws_subnet" "subnet_private" {
 }
 
 resource "aws_security_group" "sg-ubuntu" {
-  name        = "sg-server"
+  name        = "sgserver-ubuntu"
   description = "Allow inbound traffic"
   vpc_id      = aws_vpc.vpc.id
 
