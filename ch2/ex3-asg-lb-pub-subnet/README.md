@@ -22,8 +22,19 @@ terraform apply -auto-approve
 ```
 terraform output
 ```
-
 If ASG scaled in or scaled out do another terraform apply to output SSH connection details.
+
+## Sample output: connection details
+```
+terraform output
+access_LB_HTTP = "http://load-balancer-1833958287.eu-north-1.elb.amazonaws.com"
+
+access_SSH = tolist([
+  "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.51.108.47",
+  "ssh -i ./artifacts/id_rsa.priv -o 'StrictHostKeyChecking no' ubuntu@13.51.178.133",
+])
+```
+
 
 
 # Delete resources
