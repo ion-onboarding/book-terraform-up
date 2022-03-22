@@ -24,9 +24,21 @@ terraform apply -auto-approve
 terraform destroy -auto-approve
 ```
 
-# Sample output
+# Sample output: when resources are created already
+```
+terraform state list
+aws_kms_alias.alias-key-bucket
+aws_kms_key.key-bucket
+aws_s3_bucket.bucket
+aws_s3_bucket_server_side_encryption_configuration.example
+aws_s3_bucket_versioning.versioning-bucket
+random_pet.random_string
+```
 
-## Create resources
+# Sample output: screenshots AWS when resources are created already
+
+
+# Sample output: creating resources
 ```
 terraform init
 
