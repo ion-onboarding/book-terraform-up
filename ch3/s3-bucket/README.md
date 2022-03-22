@@ -37,6 +37,9 @@ random_pet.random_string
 
 # Sample output: screenshots AWS when resources are created already
 
+![](screenshots/2022-03-22-14-53-11.png)
+![](screenshots/2022-03-22-14-56-57.png)
+![](screenshots/2022-03-22-15-11-35.png)
 
 # Sample output: creating resources
 ```
