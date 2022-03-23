@@ -35,6 +35,7 @@ aws_dynamodb_table.table_employees
 ![](screenshots/2022-03-23-09-37-12.png)
 
 # Sample output
+## Create resources
 ```
 terraform init
 
@@ -121,4 +122,56 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 Outputs:
 
 dynamodb_arn = "arn:aws:dynamodb:eu-north-1:267023797923:table/employees"
+```
+
+## Destroy resources
+```
+terraform destroy -auto-approve
+aws_dynamodb_table.table_employees: Refreshing state... [id=employees]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_dynamodb_table.table_employees will be destroyed
+  - resource "aws_dynamodb_table" "table_employees" {
+      - arn            = "arn:aws:dynamodb:eu-north-1:267023797923:table/employees" -> null
+      - billing_mode   = "PAY_PER_REQUEST" -> null
+      - hash_key       = "employeeid" -> null
+      - id             = "employees" -> null
+      - name           = "employees" -> null
+      - read_capacity  = 0 -> null
+      - stream_enabled = false -> null
+      - tags           = {
+          - "environment" = "test-dev"
+        } -> null
+      - tags_all       = {
+          - "environment" = "test-dev"
+        } -> null
+      - write_capacity = 0 -> null
+
+      - attribute {
+          - name = "employeeid" -> null
+          - type = "S" -> null
+        }
+
+      - point_in_time_recovery {
+          - enabled = false -> null
+        }
+
+      - ttl {
+          - enabled = false -> null
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Changes to Outputs:
+  - dynamodb_arn = "arn:aws:dynamodb:eu-north-1:267023797923:table/employees" -> null
+aws_dynamodb_table.table_employees: Destroying... [id=employees]
+aws_dynamodb_table.table_employees: Destruction complete after 3s
+
+Destroy complete! Resources: 1 destroyed.
 ```
