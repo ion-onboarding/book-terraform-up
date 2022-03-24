@@ -6,3 +6,6 @@ Exercise 1:
 
 Exercise 2:
 [dynamodb](https://github.com/ion-onboarding/book-terraform-up/tree/main/ch3/dynamodb)
+
+Exercise 3:
+[terraform-s3-remote-backend](https://github.com/ion-onboarding/book-terraform-up/tree/main/ch3/terraform-s3-remote-backend)
